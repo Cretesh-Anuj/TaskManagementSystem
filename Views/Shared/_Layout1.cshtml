@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css link -->
+
+    <link rel="stylesheet" href="/css/Adminlayout.css">
+
+    <!-- font-awesome link -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet" />
+    <title>Task Management System</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <img src="/Images/logo.png" alt="company logo">
+            <span class="logo_name">Silicon Soft</span>
+        </div>
+        <ul class="nav-links">
+            <li class="subheader">
+                <label>Navigation</label>
+            </li>
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="icon ">
+                    <i class="fas fa-home "></i>
+                    <span class="link_name ">Dashboard</span>
+
+                </a>
+                <ul class="sub-menu blank">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index" class="link_name">Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="icon-link icon ">
+                    <a href="#">
+                        <i class="fas fa-tasks icon"></i>
+                        <span class="link_name">Task</span>
+
+                    </a>
+                    <i class="fa fa-chevron-right arrow"></i>
+
+                </div>
+                <ul class="sub-menu link">
+                    <li class="subheader">
+                        <label>Form</label>
+                    </li>
+                    <li>
+                        <a href="#" class="link_name">Task</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Task" asp-action="Create"> Create Task</a>
+                    </li>
+                    <li class="subheader">
+                        <label>Table</label>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Task" asp-action="ViewTask">View Task</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <div class="icon-link icon">
+                    <a href="#" class="icon">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span class="link_name">TaskCategory</span>
+
+                    </a>
+                    <i class="fa fa-chevron-right arrow"></i>
+
+                </div>
+                <ul class="sub-menu  link">
+
+                    <li>
+                        <a class="link_name">TaskCategory</a>
+                    </li>
+
+                    <li class="subheader">
+                        <label>Form</label>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="TaskCategory" asp-action="Create">Create TaskCategory</a>
+                    </li>
+                    <li class="subheader">
+                        <label>Table</label>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="TaskCategory" asp-action="ViewTaskCategory">View TaskCategory</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="/Images/profile.jpg" alt="profile">
+                    </div>
+
+                    <div class="name-job">
+                        <div class="profile_name">
+                            @UserManager.GetUserAsync(User).Result.UserName
+                        </div>
+                        <div class="job">
+                           Admin
+                        </div>
+
+                    </div>
+                    <i class="fas fa-sign-out-alt"></i>
+
+
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <section class="home-section">
+        <div class="navbar">
+            <div class="main-container-sidebar-section">
+                <button class="main-container-sidebar-btn sidebarOpen "><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="main-container-image-section">
+                <h5>@UserManager.GetUserAsync(User).Result.UserName </h5>
+                <img src="/Images/profile.jpg" alt="userimage">
+            </div>
+        </div>
+        <!-- logout section start -->
+        <div class="main-container-logout-section">
+            <!-- userlist-user-profile-img start here -->
+            <div class="main-container-user-profile-img">
+                <img src="/Images/profile.jpg" alt="userimage">
+                <button class="main-container-logout-section-close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <!-- userlist-user-profile-img start here -->
+            @UserManager.GetUserAsync(User).Result.UserName
+            <h3 class="main-container-user-email"> <h3>@UserManager.GetUserAsync(User).Result.Email </h3></h3>
+            <button class="main-container-manage-account">
+                <a asp-area="Identity" asp-page="/Account/Manage/_ManageNav">Manage Your Account</a>
+            </button>
+            <a style="text-decoration: none;" asp-area="Identity" asp-page="/Account/Login">
+                <button class="main-container-logout-btn"> Sign Out</button>
+            </a>
+            <!-- userlist-logout-footer-section start here -->
+            <div class="main-container-logout-footer-section">
+                <a  style="text-decoration: none;"  asp-area="Identity" asp-page="/Account/Register">Register User</a>
+            </div>
+            <!-- userlist-logout-footer-section end here -->
+        </div>
+        <!-- logout section end -->
+        <div class="home-container-section">
+            @RenderBody()
+        </div>
+    </section>
+    <script src="/js/adminlayout.js"></script>
+    <script src="/Js/layout.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
+

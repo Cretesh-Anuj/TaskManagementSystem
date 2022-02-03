@@ -1,0 +1,197 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <!-- css link -->
+    <link rel="stylesheet" href="/css/taskmangement.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-lg-3 col-md-2"></div> -->
+            <div class="col-lg-4 col-md-8 login-box">
+                <div class="col-lg-12 register-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 register-title">
+                    Register Account
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="col-lg-12 register-form">
+                    <div class="col-lg-12 register-form">
+                        <form  asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div class="register-group">
+                                <div class="form-group-inner-div">
+                                    <div>
+                                        <label asp-for="Input.FirstName" class="form-control-label">FirstName</label>
+                                        <input asp-for="Input.FirstName" type="text" class="form-control">
+                                        <span asp-validation-for="Input.FirstName" class="errormessage"></span>
+                                    </div>
+
+                                    <div>
+                                        <label asp-for="Input.LastName" class="form-control-label">LastName</label>
+                                        <input asp-for="Input.LastName" type="text" class="form-control">
+                                        <span asp-validation-for="Input.LastName" class="errormessage"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.UserName" class="form-control-label">Username</label>
+                                <input asp-for="Input.UserName" type="text" class="form-control">
+                                <span asp-validation-for="Input.UserName" class="errormessage"></span>
+
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.Email" class="form-control-label">EMAIL</label>
+                                <input asp-for="Input.Email" type="text" class="form-control">
+                                <span asp-validation-for="Input.Email" class="errormessage"></span>
+
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.Address" class="form-control-label">Address</label>
+                                <input asp-for="Input.Address" type="text" class="form-control">
+                                <span asp-validation-for="Input.Address" class="errormessage"></span>
+
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.Password" class="form-control-label">PASSWORD</label>
+                                <input asp-for="Input.Password" type="password" class="form-control" i>
+                                <span asp-validation-for="Input.Password" class="errormessage"></span>
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.ConfirmPassword" class="form-control-label">CONFIRM PASSWORD</label>
+                                <input asp-for="Input.ConfirmPassword" type="password" class="form-control" i>
+                                <span asp-validation-for="Input.ConfirmPassword" class="errormessage"></span>
+                            </div>
+                            <div class="register-group">
+                                <label asp-for="Input.UserRoleId" class="form-control-label">User Role</label>
+                                <select asp-for="Input.UserRoleId" class="form-control" asp-items="@(new SelectList((System.Collections.IEnumerable)ViewData["rolesList"], "Value", "Text"))">
+                                    <option selected disabled> select one role</option>
+                                </select>
+                                <span asp-validation-for="Input.UserRoleId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-lg-12 loginbttm">
+
+                                <div class="col-lg-12 login-btm register-button">
+                                    <button type="submit" class="btn btn-outline-primary">Register</button>
+                                </div>
+                                <div class="bottom-links">
+                                    <p>Already have an account? <a id="Login" asp-page="./Login">Log In</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                
+                </div>
+                
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+</div>
+
+
+
+</body>
+</html>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Address"></label>
+                <input asp-for="Input.Address" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.UserName"></label>
+                <input asp-for="Input.UserName" class="form-control" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.UserRoleId"></label>
+                <select asp-for="Input.UserRoleId" class="form-control" asp-items="@(new SelectList((System.Collections.IEnumerable)ViewData["rolesList"], "Value", "Text"))"></select>
+                <span asp-validation-for="Input.UserRoleId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,55 @@
+﻿@model TaskManagementSystem.Models.TaskCategory
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "/Views/Shared/_Layout1.cshtml";
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css link -->
+    <!-- <link rel="stylesheet" href="./user.css"> -->
+
+    <link rel="stylesheet" href="/css/Adminlayout.css">
+    <link rel="stylesheet" href="~/css/Admintaskmgmt.css" />
+    <!-- font-awesome link -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet" />
+    <title>Delete</title>
+</head>
+<body>
+    <div class="taskcategory-details-list-section">
+        <!-- userlist-list-header-section start here -->
+        <div class="taskcategory-details-list-header-section">
+            <div class="name">Name</div>
+            <div class="userlist-username">Manager</div>
+        </div>
+
+        <div class="taskcategory-details-rowlist-section">
+
+
+            <div class="userlist-taskname-value">@Model.Name</div>
+
+            <div class="taskcategory-Manager-value">@Model.Manager.UserName</div>
+        </div>
+        <div>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a> |
+            <a asp-action="ViewTaskCategory">Back to List</a>
+        </div>
+    </div>
+    <script src="/Javascript/layout.js"></script>
+</body>
+
+
+@*<form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="ViewTaskCategory">Back to List</a>
+    </form>*@
+

@@ -1,0 +1,129 @@
+﻿@model IEnumerable<TaskManagementSystem.ViewModels.ListViewModel>
+
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "/Views/Shared/_Layout1.cshtml";
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css link -->
+    <!-- <link rel="stylesheet" href="./user.css"> -->
+
+
+    <link rel="stylesheet" href="/css/Adminlayout.css">
+    <link rel="stylesheet" href="~/css/Admintaskmgmt.css" />
+    <!-- font-awesome link -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet" />
+    <title>ViewTask</title>
+</head>
+<body>
+
+    <div class="userlist-list-section">
+        <div class="userlist-list-header-section">
+            <div class="sn">S.N.</div>
+
+            <div class="taskname">Task Name</div>
+
+            <div class="userlist-taskdetails">Task Description</div>
+
+
+            <div class="userlist-DueDate">Assigned Date</div>
+
+            <div class="userlist-DueDate">Due Date</div>
+
+            <div class="userlist-assignedby">Assigned By</div>
+
+            <div class="userlist-assignedby">Assigned To</div>
+
+            <div class="userlist-taskcategory">Task Category</div>
+
+            <div class="userlist-taskstatus">Task Status</div>
+
+            <div class="userlist-taskcompletedate">Task Completed Date</div>
+
+            <div class="userlist-DueDate">Created Date</div>
+
+            <div class="userlist-edit-delete">Action</div>
+        </div>
+        @{int i = 1; }
+        @foreach (var item in Model)
+        {
+            if (item.Id != 1)
+            {
+                <div class="userlist-rowlist-section">
+                    <div class="userlist-sn-value">@(i++)</div>
+
+                    <div class="userlist-taskname-value">@item.TaskName</div>
+
+                    <div class="userlist-taskdetail-value">@item.TaskDescription</div>
+
+                    <div class="userlist-duedate-value">@item.AssignedDate</div>
+
+                    <div class="userlist-duedate-value">@item.DueDate</div>
+
+                    <div class="userlist-assignedby-value">@item.Assignedby.UserName</div>
+
+                    <ul class="userlist-assignedby-value">
+                        @foreach (var items in item.AssignedTo)
+                        {
+
+                            <li>@items</li>
+
+                        }
+                    </ul>
+
+
+                    <div class="userlist-taskcategory-value">@item.TaskCategory.Name</div>
+
+                    <div class="userlist-taskstatus-value">@item.Taskstatus</div>
+
+                    <div class="userlist-taskcompletedate-value">@item.TaskCompletedDate</div>
+
+                    <div class="userlist-duedate-value">@item.CreatedDate</div>
+
+
+                    <div class="userlist-edit-delete-value" style="padding: 0 0;">
+                        <a class="edit-btn" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-user-lock"></i></a>
+                        <a class="detail-btn" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-file-word"></i></a>
+                        <a class="delete-btn" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <!-- userlist-sixthrowlist-section end here -->
+    <div class="userlist-page-change-section">
+        <!-- userlist-previous-page-section start here -->
+        <div class="userlist-previous-page-section">
+            <button class="userlist-previous-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <!-- <p>Previous Page</p> -->
+        </div>
+        <!-- userlist-previous-page-section end here -->
+        <!-- userlist-current-page-section start here -->
+        <div class="userlist-current-page-section">
+            1
+        </div>
+        <!-- userlist-current-page-section end here -->
+        <!-- userlist-next-page-section start here -->
+        <div class="userlist-next-page-section">
+            <!-- <p>Next Page</p> -->
+            <button class="userlist-next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <!-- userlist-next-page-section end here -->
+    </div>
+    <!-- userlist-page-change-section end here -->
+    
+    <script src="/Javascript/adminlayout.js"></script>
+</body>
+

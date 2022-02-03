@@ -1,0 +1,932 @@
+/* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet" /> */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: arial;
+  box-sizing: border-box;
+}
+:root {
+  --bg-color: #222d32;
+  --border-color: whitesmoke;
+  --sidebar-color: #1a2226;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+.container-fluid {
+  background: #222d32;
+  height: 100vh;
+}
+.row {
+  height: inherit;
+  display: grid;
+  place-items: center;
+}
+
+.login-box {
+  width: 28%;
+  padding: unset;
+  height: auto;
+  background: #1a2226;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: block;
+  margin: 0 auto;
+}
+
+.login-key {
+  height: 100px;
+  font-size: 65px;
+  line-height: 100px;
+  background: -webkit-linear-gradient(#27ef9f, #0db8de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.register-key {
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  background: -webkit-linear-gradient(#27ef9f, #0db8de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #ecf0f5;
+}
+.register-title {
+  text-align: center;
+  font-size: 30px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #ecf0f5;
+}
+
+.login-form {
+  margin-top: 20px;
+  text-align: left;
+}
+.register-form {
+  margin-top: 1px;
+  text-align: left;
+}
+
+.form-group-inner-div {
+  display: flex;
+  justify-content: space-between;
+}
+.form-group-inner-div div {
+  width: 49%;
+}
+
+.login-form input[type="text"] {
+  background-color: #1a2226;
+  border: none;
+  border-bottom: 2px solid #0db8de;
+  border-top: 0px;
+  border-radius: 0px;
+  font-weight: bold;
+  outline: 0;
+  margin-bottom: 15px;
+  padding-left: 0px;
+  color: #ecf0f5;
+}
+.register-form input[type="text"] {
+  background-color: #1a2226;
+  border: none;
+  border-bottom: 2px solid #0db8de;
+  border-top: 0px;
+  border-radius: 0px;
+  font-weight: bold;
+  outline: 0;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  color: #ecf0f5;
+  height: 32px;
+}
+
+.login-form input[type="password"] {
+  background-color: #1a2226;
+  border: none;
+  border-bottom: 2px solid #0db8de;
+  border-top: 0px;
+  border-radius: 0px;
+  font-weight: bold;
+  outline: 0;
+  padding-left: 0px;
+  margin-bottom: 15px;
+  color: #ecf0f5;
+}
+.register-form input[type="password"] {
+  background-color: #1a2226;
+  border: none;
+  border-bottom: 2px solid #0db8de;
+  border-top: 0px;
+  border-radius: 0px;
+  font-weight: bold;
+  outline: 0;
+  padding-left: 0px;
+  margin-bottom: 0px;
+  color: #ecf0f5;
+  height: 32px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+  outline: 0px;
+}
+.register-group {
+  margin-bottom: 5px;
+  outline: 0px;
+}
+.form-control {
+  background-color: var(--sidebar-color);
+  border-color: #0db8de;
+  color: white;
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 2px solid #0db8de;
+  outline: 0;
+  background-color: #1a2226;
+  color: #ecf0f5;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+.form-control-label {
+  font-size: 13px;
+  color: #6c6c6c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.largerCheckbox {
+  font-size: 14px;
+  color: #6c6c6c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn-outline-primary {
+  border-color: #0db8de;
+  color: #0db8de;
+  border-radius: 0px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn-outline-primary:hover {
+  background-color: #0db8de;
+  right: 0px;
+}
+
+.login-btm {
+  float: left;
+}
+
+.login-button {
+  padding-right: 0px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.register-button {
+  padding-right: 0px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
+.login-text {
+  text-align: left;
+  padding-left: 0px;
+  color: #a2a4a4;
+}
+
+.loginbttm {
+  padding: 0px;
+}
+.bottom-links {
+  text-align: center;
+  font-size: 13px;
+  color: #6c6c6c;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.bottom-links a {
+  color: #0db8de;
+  text-decoration: none;
+}
+.errormessage {
+  font-size: 13px;
+  color: rgb(247, 47, 47);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* dashboard */
+.home-container-section {
+  display: grid;
+  place-items: center;
+  height: 89.5%;
+  font-size: 1.5em;
+  color: rgb(194, 192, 192);
+}
+
+/* userlist */
+
+.userlist-list-header-section {
+    display: grid;
+    /*grid-template-columns: 20% 45% 35%;*/
+    grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 12% 14%;
+    background-color: var(--sidebar-color);
+    height: 45px;
+    color: white;
+    padding: 0.8em 0.5em;
+    margin-top: 1em;
+}
+/* user list  header section end here */
+
+/* userlist-firstrowlist-section start here */
+.userlist-rowlist-section {
+  display: grid;
+  /* grid-template-columns: 50% 50%; */
+  grid-template-columns: 20% 45% 35%;
+  color: black;
+  height: 45px;
+  /* padding: 0.5em; */
+  padding: 0.5em;
+  font-size: 0.8em;
+  border: 1px solid #bebbbb;
+}
+.userlist-sn-value {
+  /* background-color: turquoise; */
+  display: flex;
+  align-items: center;
+  margin-left: 0.5em;
+}
+.userlist-taskname-value {
+  display: flex;
+  align-items: center;
+}
+.taskcategory-name-value {
+  display: flex;
+  align-items: center;
+}
+.userlist-taskdetail-value {
+  display: flex;
+  align-items: center;
+}
+.userlist-rowlist-section:nth-child(odd) {
+  background-color: white;
+}
+/* userlist-firstrowlist-section end here */
+
+/* userlist-secondrowlist-section start here */
+
+/* userlist-edit-delete-value start here*/
+.userlist-edit-delete-value {
+  color: white;
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+
+.delete-btn {
+  background-color: red;
+  border: unset;
+  height: 30px !important;
+  width: 35px !important;
+  color: white;
+  cursor: pointer;
+}
+.edit-btn {
+  background-color: green;
+  border: unset;
+  height: 30px !important;
+  width: 35px !important;
+  color: white;
+  cursor: pointer;
+  margin-right: 1em;
+}
+/* userlist-edit-delete-value end here*/
+
+/* userlist-list-section end here */
+
+/* userlist-page-change-section start */
+.userlist-page-change-section {
+  padding: 0 1em;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  /* background-color: wheat; */
+}
+
+.userlist-previous-page-section {
+  display: flex;
+  place-items: center;
+}
+.userlist-next-page-section {
+  display: flex;
+  place-items: center;
+}
+.userlist-previous-btn,
+.userlist-next-btn {
+  background-color: unset;
+  border: unset;
+  color: var(--bg-color);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.userlist-current-page-section {
+  background-color: var(--bg-color);
+  color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: grid;
+  place-items: center;
+}
+/* userlist-page-change-section end */
+
+/* ----------------------------user page start here ---------------------*/
+@media screen and (min-width: 360px) {
+  /*--------------------------------- userpage css start here-------------------------------------- */
+  .userlist-edit-delete-value {
+    width: 90%;
+  }
+  /*---------------------------------- userpage css end here -------------------------------------*/
+}
+@media screen and (min-width: 768px) {
+  /*/* user list start here */
+
+.userlist-list-section {
+    /*padding: 0 1em;*/
+    width: 100%;
+    height: auto;
+    font-size: 0.6em;
+}
+
+    .userlist-list-header-section {
+        display: grid;
+        /* grid-template-columns: 25% 25% 25% 25%; */
+        /*grid-template-columns: 10% 25% 25% 28% 17%;*/
+        /*  grid-template-columns: 4% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;*/
+        grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 12% 14%;
+        background-color: var(--sidebar-color);
+        height: 50px;
+        color: white;
+        /*padding: 1em;*/
+        margin-top: 1em;
+        border-radius: 7px 7px 0 0;
+    }
+    .userlist-rowlist-section {
+        display: grid;
+        /* grid-template-columns: 25% 25% 25% 25%; */
+        grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 12% 14%;
+        color: black;
+        height: 50px;
+        /* padding: 0.5em; */
+        padding: 0.8em;
+        font-size: 0.8em;
+        border: 1px solid #bebbbb;
+    }
+  .userlist-taskname-value {
+    display: flex;
+    align-items: center;
+  }
+  .taskcategory-name-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-taskdetail-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-duedate-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-assignedby-value {
+    display: flex;
+    align-items: center;
+  }
+  .taskcategory-Manager-value {
+    display: flex;
+    align-items: center;
+  }
+
+  .userlist-edit-delete-value {
+    color: white;
+    display: grid;
+    grid-template-columns: 50% auto;
+  }
+
+  .delete-btn {
+    background-color: red;
+    border: unset;
+    height: 30px !important;
+    width: 35px !important;
+    color: white;
+    cursor: pointer;
+  }
+  .edit-btn {
+    background-color: green;
+    border: unset;
+    height: 30px !important;
+    width: 35px !important;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* userlist page change section start */
+
+  .userlist-page-change-section {
+    width: 15%;
+    margin: 1em auto;
+  }
+  /* userlist page change section end */
+  /*----------------------------------------- userlist page 768px css end here ---------------------------------*/
+}
+
+@media screen and (min-width: 992px) {
+  /* user list start here */
+
+  .userlist-list-section {
+    padding: 30px 2em;
+    width: 100%;
+    height: 89.3%;
+    background-color: unset;
+    /* display: flex;
+    align-items: center; */
+  }
+    .userlist-list-header-section {
+        display: grid;
+        /* grid-template-columns: 20% 20% 25% 15% 20%; */
+        /* grid-template-columns: 5% 20% 20% 27% 16% 12%; */
+        grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 6%;
+        background-color: var(--sidebar-color);
+        height: 50px;
+        color: white;
+        padding: 1em 1em;
+        margin-top: 1em;
+    }
+  .userlist-rowlist-section {
+    display: grid;
+    /* grid-template-columns: 20% 20% 25% 15% 20%; */
+    grid-template-columns: 5% 18% 20% 27% 16% 14%;
+    /* grid-template-columns: 16% 16% 16% 16% 16% 16%; */
+
+    color: black;
+    height: 50px;
+    padding: 1em;
+    /* padding: 1em; */
+    font-size: 0.8em;
+    border: 1px solid #bebbbb;
+  }
+
+  .userlist-sn-value {
+    display: flex;
+    align-items: center;
+    /* background-color: violet; */
+    margin-left: 0.7em;
+  }
+  .userlist-taskname-value {
+    display: flex;
+    align-items: center;
+  }
+  .taskcategory-name-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-taskdetail-value {
+    display: flex;
+    align-items: center;
+  }
+
+  .userlist-duedate-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-assignedby-value {
+    display: flex;
+    align-items: center;
+  }
+  .taskcategory-Manager-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-taskcategory-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-taskstatus-value {
+    display: flex;
+    align-items: center;
+  }
+  .userlist-taskcompletedate-value {
+    display: flex;
+    align-items: center;
+  }
+
+  .userlist-edit-delete-value {
+    color: white;
+    display: grid;
+    grid-template-columns: 50% auto;
+  }
+
+  .delete-btn {
+    background-color: red;
+    border: unset;
+    height: 30px !important;
+    width: 40px !important;
+    color: white;
+    cursor: pointer;
+  }
+  .edit-btn {
+    background-color: green;
+    border: unset;
+    height: 30px !important;
+    width: 40px !important;
+    color: white;
+    cursor: pointer;
+    margin-right: 1em;
+  }
+  /* ------------------------------------------userlist 992px css end here -----------------------------------------*/
+}
+
+@media screen and (min-width: 1400px) {
+    .userlist-list-header-section {
+        display: grid;
+        grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 12% 14%;
+        background-color: var(--bg-color);
+        height: 54px;
+        color: white;
+        padding: 1em 1em;
+        margin-top: 1em;
+    }
+
+  .taskcategory-list-section {
+    display: block;
+    margin: 0 auto;
+    padding: 30px 2em;
+    width: 60%;
+    background-color: unset;
+  }
+
+  .taskcategory-list-header-section {
+    display: grid;
+
+    grid-template-columns: 10% 25% 35% 30%;
+
+    background-color: var(--bg-color);
+    height: 60px;
+    color: white;
+    padding: 1em 1em;
+    margin-top: 1em;
+    border-radius: 7px 7px 0 0;
+  }
+    .userlist-rowlist-section {
+        display: grid;
+        grid-template-columns: 4% 8% 8% 8% 8% 8% 8% 8% 8% 8% 12% 14%;
+        color: black;
+        height: 50px;
+        padding: 1em;
+        font-size: 0.8em;
+        border: 1px solid #bebbbb;
+    }
+  .taskcategory-rowlist-section {
+    display: grid;
+    grid-template-columns: 10% 25% 35% 30%;
+    color: black;
+    height: 50px;
+    padding: 1em;
+    font-size: 0.8em;
+    border: 1px solid #bebbbb;
+  }
+  .userlist-edit-delete-value {
+    color: white;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+  .delete-btn {
+    background-color: unset;
+    border: unset;
+    font-size: 20px;
+
+    height: unset;
+    width: unset;
+    color: red;
+    cursor: pointer;
+  }
+  .edit-btn {
+    background-color: unset;
+    border: unset;
+    font-size: 20px;
+
+    height: unset;
+    width: unset;
+    color: green;
+    cursor: pointer;
+    margin-right: 1em;
+  }
+  .detail-btn {
+    background-color: unset;
+    border: unset;
+    font-size: 20px;
+
+    height: unset;
+    width: unset;
+    color: green;
+    cursor: pointer;
+    margin-right: 1em;
+  }
+
+  /* create task  */
+  .createtask-container-section {
+    height:100%;
+    width: 100%;
+     /*background-color: turquoise;*/ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+   
+
+  .createtaskcategory-container-section {
+    height: 100%;
+    width: 100%;
+    /*background-color: turquoise;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    .createtask-from-section {
+        background-color: #1a2226;
+        height: 85%;
+        width: 90%;
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+
+  .createtaskcategory-from-section {
+    background-color: #1a2226;
+    height: 89.5%;
+    width: 45%;
+    position: relative;
+  }
+  .createtask-firstrow-section {
+    height: 100%;
+    width: 100%;
+    /* background-color: #1a2226; */
+    padding: 2em 1em;
+  }
+    .createtask-secondrow-section {
+        height: 100%;
+        width: 100%;
+        /* background-color: #1a2226; */
+        padding: 2em 1em;
+    }
+    .createtask-thirdrow-section {
+        height: 100%;
+        width: 100%;
+        /* background-color: #1a2226; */
+        padding: 2em 1em;
+        position: relative;
+    }
+
+
+  .taskfrom {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+  }
+  .taskfrom label {
+    font-size: 15px;
+    color: #6c6c6c;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  .task-form-input {
+    background-color: #1a2226;
+    border: none;
+    border-bottom: 2px solid #0db8de;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 0px;
+    color: #ecf0f5;
+    height: 30px;
+  }
+  .taskcategory-form-input {
+    background-color: #1a2226;
+    border: none;
+    border-bottom: 2px solid #0db8de;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 0px;
+    color: #ecf0f5;
+    height: 30px;
+    display: none;
+  }
+  .taskcategory-form-input.show {
+    display: block;
+  }
+  .task-form-inputs {
+    background-color: #1a2226;
+    border: none;
+    border-bottom: 2px solid #0db8de;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-left: 0px;
+    color: #6c6c6c;
+    height: 30px;
+  }
+
+  /* btn */
+  .container-btn {
+    position: absolute;
+    top: 80%;
+    right: 5%;
+  }
+    .updatebtn.btn {
+        outline: none;
+        height: 40px;
+        text-align: center;
+        width: 180px;
+        border-radius: 40px;
+        background: #1a2226;
+        border: 3px solid #0db8de;
+        color: #0db8de;
+        letter-spacing: 1px;
+        text-shadow: 0;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+    .updatebtn.onclic {
+        width: 40px;
+        height: 40px;
+        outline: none;
+        border-color: #0db8de;
+        border-width: 4px;
+        border-radius: 50%;
+        font-size: 0;
+        border-left-color: #0db8de;
+        background-color: var(--sidebar-color);
+        animation: rotating 2s 0.25s linear infinite;
+    }
+    .updatebtn.btn::after {
+        content: "Update";
+    }
+
+    .updatebtn.validate {
+        outline: none;
+        height: 40px;
+        text-align: center;
+        width: 180px;
+        border-radius: 40px;
+        background: #1a2226;
+        border: 3px solid #1ecd97;
+        color: #1ecd97;
+        letter-spacing: 1px;
+        text-shadow: 0;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+  .createbtn.btn {
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 180px;
+    border-radius: 40px;
+    background: #1a2226;
+    border: 3px solid #0db8de;
+    color: #0db8de;
+    letter-spacing: 1px;
+    text-shadow: 0;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .createbtn.btn::after {
+    content: "Create";
+  }
+  #button:hover {
+    color: white;
+    background: #0db8de;
+  }
+
+  .createbtn.onclic {
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border-color: #0db8de;
+    border-width: 4px;
+    border-radius: 50%;
+    font-size: 0;
+    border-left-color: #0db8de;
+
+    background-color: var(--sidebar-color);
+    animation: rotating 2s 0.25s linear infinite;
+  }
+  .createbtn.validate {
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 180px;
+    border-radius: 40px;
+    background: #1a2226;
+    border: 3px solid #1ecd97;
+    color: #1ecd97;
+    letter-spacing: 1px;
+    text-shadow: 0;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .createbtn.validate::after {
+    content: "Success";
+    /* font-family: "Font Awesome";
+    content: "\f00c"; */
+  }
+
+  @keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+.taskcategory-details-list-section {
+    display: block;
+    margin: 0 auto;
+    padding: 30px 2em;
+    width: 60%;
+    background-color: unset;
+}
+
+.taskcategory-details-list-header-section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: var(--bg-color);
+    height: 60px;
+    color: white;
+    padding: 1em 1em;
+    margin-top: 1em;
+    border-radius: 7px 7px 0 0;
+}
+.taskcategory-details-rowlist-section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: black;
+    height: 50px;
+    padding: 1em;
+    font-size: 0.8em;
+    border: 1px solid #bebbbb;
+}
+/* taskcategory */
+/* .taskghj-container-section {
+  display: grid;
+  place-items: center;
+  height: 89.5%;
+  font-size: 1.5em;
+  color: rgb(194, 192, 192);
+}
+.main-termandconditions-form {
+  height: 100px;
+  width: 50%;
+  background-color: white;
+} */

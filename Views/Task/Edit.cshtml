@@ -1,0 +1,132 @@
+﻿
+@model TaskManagementSystem.ViewModel.TaskViewModel
+@*@using TaskManagementSystem.Enumerable*@
+@{
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "/Views/Shared/_Layout1.cshtml";
+    }
+    else
+    {
+        Layout = "/Views/Shared/_Layout.cshtml";
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css link -->
+    <!-- <link rel="stylesheet" href="./user.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="/css/Adminlayout.css">
+    <link rel="stylesheet" href="~/css/Admintaskmgmt.css" />
+    <!-- font-awesome link -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet" />
+    <title>Edit Task</title>
+
+</head>
+<body>
+
+    <div class="createtask-container-section">
+        <form asp-action="Edit" class="createtask-from-section">
+            <div asp-validation-summary="ModelOnly" class="errormessage"></div>
+            <div class="createtask-firstrow-section">
+                <div class="taskfrom">
+                    <label asp-for="TaskName">Task Name</label>
+                    <input asp-for="TaskName" type="text" class="task-form-input">
+                    <span asp-validation-for="TaskName" class="errormessage"></span>
+
+                </div>
+                <div class="taskfrom">
+                    <label asp-for="TaskDescription" class="control-label"></label>
+                    <input asp-for="TaskDescription" class="task-form-input" />
+                    <span asp-validation-for="TaskDescription" class="errormessage"></span>
+                </div>
+                <div class="taskfrom">
+                    <label asp-for="AssignedDate" class="control-label"></label>
+                    <input asp-for="AssignedDate" class="task-form-input" />
+                    <span asp-validation-for="AssignedDate" class="errormessage"></span>
+                </div>
+
+                <div class="taskfrom">
+                    <label asp-for="DueDate" class="control-label"></label>
+                    <input asp-for="DueDate" class="task-form-input" />
+                    <span asp-validation-for="DueDate" class="errormessage"></span>
+                </div>
+            </div>
+
+
+            <div class="createtask-secondrow-section">
+                <div class="taskfrom">
+                    <label asp-for="AssignedById"></label>
+                    <select asp-for="AssignedById" class="task-form-input" asp-items="@(new SelectList(Model.Assignedby, "Value","Text"))">
+                        <option disabled>Press CTRL to select multiple values</option>
+                    </select>
+                    <span asp-validation-for="AssignedById" class="errormessage"></span>
+                </div>
+                <div class="taskfrom">
+                    <label asp-for="AssignedToIds"></label>
+                    <select asp-for="AssignedToIds" class="task-form-input" asp-items="@(new SelectList(Model.AssignedTo, "Value","Text"))" multiple>
+                        <option disabled>Press CTRL to select multiple values</option>
+                    </select>
+                    <span asp-validation-for="AssignedToIds" class="errormessage"></span>
+                </div>
+
+                <div class="taskfrom">
+                    <label asp-for="Taskstatus"></label>
+                    <select asp-for="Taskstatus" class="task-form-input" asp-items="Html.GetEnumSelectList<Taskstatus>()">
+                        <option disabled>Select Taskstatus</option>
+                    </select>
+                    <span asp-validation-for="Taskstatus" class="errormessage"></span>
+                </div>
+                <div class="taskfrom">
+                    <label asp-for="TaskCompletedDate"></label>
+                    <input asp-for="TaskCompletedDate" class="task-form-input" />
+                    <span asp-validation-for="TaskCompletedDate" class="errormessage"></span>
+                </div>
+
+            </div>
+
+            <div class="createtask-thirdrow-section">
+
+                <div class="taskfrom">
+                    <label asp-for="CreatedDate"></label>
+                    <input asp-for="CreatedDate" class="task-form-input" />
+
+                    <span asp-validation-for="CreatedDate" class="errormessage"></span>
+                </div>
+                <div class="taskfrom">
+                    <label asp-for="TaskCatogoriesId"></label>
+                    <select asp-for="TaskCatogoriesId" class="task-form-input" asp-items="@(new SelectList(Model.TaskCategories, "Value", "Text"))">
+                        <option disabled>Select Taskstatus</option>
+                    </select>
+                    <span asp-validation-for="TaskCatogoriesId" class="errormessage"></span>
+                </div>
+                <div class="container-btn">
+                    <input type="submit" value="Updata" class="createbtn btn" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- </div> -->
+    <!-- add-user section end here -->
+    <!-- </div> -->
+    <!-- userlist-main-container end here  -->
+    <!-- userlist-wrapper start -->
+    <script src="/Javascript/create.js"></script>
+    <script src="/Javascript/adminlayout.js"></script>
+
+</body>
+</html>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+}
+
+
