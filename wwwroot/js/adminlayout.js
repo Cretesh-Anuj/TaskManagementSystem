@@ -83,15 +83,17 @@ function newDoc() {
 // createtask js
 
 const modal = document.getElementById("myModal");
-const modaldetail = document.getElementById("myModal-detail");
+//const modaldetail = document.getElementById("myModal-detail");
 
 const deletbtn = document.querySelectorAll(".delete-btn");
-const detailbtn = document.querySelectorAll(".detail-btn");
-const clearfixcancelbtn = document.querySelector(".cancelbtn");
-const clearfixcancelbtnn = document.querySelector(".cancelbtnn");
+//const detailbtn = document.querySelectorAll(".detail-btn");
+//const clearfixcancelbtn = document.querySelector(".cancelbtn");
+//const clearfixcancelbtnn = document.querySelector(".cancelbtnn");
 
 deletbtn.forEach((eachbtn) => {
-    eachbtn.addEventListener("click", () => {
+    eachbtn.addEventListener("click", (e) => {
+        debugger
+        document.getElementsByClassName('delete-catgegory')[0].setAttribute("id", e.currentTarget.dataset.id);
         modal.style.display = "block";
     });
 });
@@ -101,19 +103,19 @@ deletbtn.forEach((eachbtn) => {
 //     modaldetail.style.display = "block";
 //    });
 //});
-clearfixcancelbtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+//clearfixcancelbtn.addEventListener("click", () => {
+//    modal.style.display = "none";
+//});
 
-clearfixcancelbtnn.addEventListener("click", () => {
-    modaldetail.style.display = "none";
-});
+//clearfixcancelbtnn.addEventListener("click", () => {
+//    modaldetail.style.display = "none";
+//});
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
-    } else if (event.target == modaldetail) {
-        modaldetail.style.display = "none";
-    }
+    } /*else if (event.target == modaldetail) {*/
+    //    modaldetail.style.display = "none";
+    //}
 };
 
 

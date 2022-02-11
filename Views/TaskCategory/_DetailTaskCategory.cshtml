@@ -1,0 +1,28 @@
+﻿@model TaskManagementSystem.Models.TaskCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+        
+        <div class="detail-content-section">
+            <div class="detail-section">
+                <h4 class="detail-title">
+                    TaskCategory
+                </h4>
+                <h4>@Model.Name</h4>
+            </div>
+            <div class="detail-section">
+                <h4 class="detail-title">
+                    Manager
+                </h4>
+                <h4>@Model.Manager.UserName</h4>
+            </div>
+
+        </div>
+
+
+       
+    <script src="~/lib/jquery/jquery.min.js"></script>
+
+

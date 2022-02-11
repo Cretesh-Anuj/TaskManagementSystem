@@ -21,9 +21,9 @@
             <span class="logo_name">Silicon Soft</span>
         </div>
         <ul class="nav-links">
-            <li class="subheader">
+            @*<li class="subheader">
                 <label>Navigation</label>
-            </li>
+            </li>*@
             <li>
                 <a asp-controller="Home" asp-action="Index" class="icon ">
                     <i class="fas fa-home "></i>
@@ -47,23 +47,24 @@
 
                 </div>
                 <ul class="sub-menu link">
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Form</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a href="#" class="link_name">Task</a>
                     </li>
                     <li>
                         <a asp-area="" asp-controller="Task" asp-action="Create"> Create Task</a>
                     </li>
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Table</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="" asp-controller="Task" asp-action="ViewTask">View Task</a>
                     </li>
 
                 </ul>
+
             </li>
 
             <li>
@@ -82,19 +83,32 @@
                         <a class="link_name">TaskCategory</a>
                     </li>
 
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Form</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="" asp-controller="TaskCategory" asp-action="Create">Create TaskCategory</a>
                     </li>
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Table</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="" asp-controller="TaskCategory" asp-action="ViewTaskCategory">View TaskCategory</a>
                     </li>
 
+                </ul>
+
+            </li>
+            <li>
+                <a asp-area="Identity" asp-page="/Account/Register" class="icon ">
+                    <i class="fas fa-home "></i>
+                    <span class="link_name ">User Registration</span>
+
+                </a>
+                <ul class="sub-menu blank">
+                    <li>
+                        <a asp-area="Identity" asp-page="/Account/Register" class="link_name">User Registration</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -109,7 +123,7 @@
                             @UserManager.GetUserAsync(User).Result.UserName
                         </div>
                         <div class="job">
-                           Admin
+                            Admin
                         </div>
 
                     </div>
@@ -138,7 +152,7 @@
             <!-- userlist-user-profile-img start here -->
             <div class="main-container-user-profile-img">
                 <img src="/Images/profile.jpg" alt="userimage">
-                <button class="main-container-logout-section-close-btn"><i class="fas fa-times"></i></button>
+                <button class="main-container-logout-section-close-btn"><i asp-area="Identity" asp-page="/Account/Login" class="fas fa-times"></i></button>
             </div>
             <!-- userlist-user-profile-img start here -->
             @UserManager.GetUserAsync(User).Result.UserName
@@ -150,9 +164,9 @@
                 <button class="main-container-logout-btn"> Sign Out</button>
             </a>
             <!-- userlist-logout-footer-section start here -->
-            <div class="main-container-logout-footer-section">
+            @*<div class="main-container-logout-footer-section">
                 <a  style="text-decoration: none;"  asp-area="Identity" asp-page="/Account/Register">Register User</a>
-            </div>
+            </div>*@
             <!-- userlist-logout-footer-section end here -->
         </div>
         <!-- logout section end -->
@@ -161,8 +175,8 @@
         </div>
     </section>
     <script src="/js/adminlayout.js"></script>
-    <script src="/Js/layout.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+    <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

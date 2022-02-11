@@ -41,7 +41,7 @@ namespace TaskManagementSystem.Controllers
                 var taskcategory = _context.TaskCategories.Find(item.TaskCategoryId);
                 item.TaskCategory = taskcategory;
             }
-            return View(task1);
+            return PartialView("_DetailTask",task1);
         }
 
         [Authorize]
@@ -221,9 +221,10 @@ namespace TaskManagementSystem.Controllers
 
                     foreach (var items in item.AssignedToIds)
                     {
-
-                        var users = _context.Users.Find(items);
-                        item.AssignedTo.Add(users);
+                       
+                            var users = _context.Users.Find(items);
+                            item.AssignedTo.Add(users);
+                        
 
 
                     }
@@ -235,23 +236,29 @@ namespace TaskManagementSystem.Controllers
             }
             else
             {
-                var TaskLists = _context.Tasks.Include(a => a.UserTasks).ToList();
-                var allTaskList = TaskLists.Select(c => new ListViewModel()
+
+
+
+                var TaskLists = _context.UsersTasks.Include(a => a.ApplicationUser).Include(a =>a.Task ).Where(a=>a.ApplicationUserId == userId)
+                    .Select(c => new ListViewModel()
                 {
-                    Id = c.Id,
-                    TaskName = c.TaskName,
-                    TaskDescription = c.TaskDescription,
-                    Taskstatus = c.Taskstatus,
-                    TaskCatogoryId = c.TaskCategoryId,
-                    AssignedDate = c.AssignedDate,
-                    AssignedById = c.AssignedById,
-                    DueDate = c.DueDate,
-                    TaskCompletedDate = c.TaskCompletedDate,
-                    CreatedDate = c.CreatedDate,
-                    AssignedToIds = c.UserTasks.Select(c => c.ApplicationUserId).ToArray(),
+                    Id = c.Task.Id,
+                    TaskName = c.Task.TaskName,
+                    TaskDescription = c.Task.TaskDescription,
+                    Taskstatus = c.Task.Taskstatus,
+                    TaskCatogoryId = c.Task.TaskCategoryId,
+                    AssignedDate = c.Task.AssignedDate,
+                    AssignedById = c.Task.AssignedById,
+                    DueDate = c.Task.DueDate,
+                    TaskCompletedDate = c.Task.TaskCompletedDate,
+                    CreatedDate = c.Task.CreatedDate,
+                    AssignedToIds = c.Task.UserTasks.Select(c => c.ApplicationUserId).ToArray(),
+
 
                 }).ToList();
-                foreach (var item in allTaskList)
+                
+             
+                foreach (var item in TaskLists)
                 {
                     var assignedby = _context.Users.Find(item.AssignedById);
 
@@ -263,16 +270,18 @@ namespace TaskManagementSystem.Controllers
 
                     foreach (var items in item.AssignedToIds)
                     {
-
-                        var users = _context.Users.Find(items);
-                        item.AssignedTo.Add(users);
+                        if (items == userId)
+                        {
+                            var users = _context.Users.Find(items);
+                            item.AssignedTo.Add(users);
+                        }
 
                     }
                    
                 }
-                 
+                return View(TaskLists);
             }
-            return View();
+            
         }
 
         // GET: TaskController/Edit/5
@@ -486,31 +495,41 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: TaskController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            var task1 = _context.Tasks.Find(id);
-            var TaskLists = _context.Tasks.ToList();
-            foreach (var item in TaskLists)
-            {
-                var assignedby = _context.Users.Find(item.AssignedById);
+        //public ActionResult Delete(int id)
+        //{
+        //    var task1 = _context.Tasks.Find(id);
+        //    var TaskLists = _context.Tasks.ToList();
+        //    foreach (var item in TaskLists)
+        //    {
+        //        var assignedby = _context.Users.Find(item.AssignedById);
 
-                item.AssignedBy = assignedby;
+        //        item.AssignedBy = assignedby;
 
-                var taskcategory = _context.TaskCategories.Find(item.TaskCategoryId);
-                item.TaskCategory = taskcategory;
-            }
-            return View(task1);
+        //        var taskcategory = _context.TaskCategories.Find(item.TaskCategoryId);
+        //        item.TaskCategory = taskcategory;
+        //    }
+        //    return View(task1);
 
-        }
+        //}
 
         // POST: TaskController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(Task task1)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
-            _context.Tasks.Remove(task1);
-            _context.SaveChanges();
-            return RedirectToAction("ViewTask");
+            try
+            {
+                var task = _context.Tasks.Where(a => a.Id == id).FirstOrDefault();
+                _context.Tasks.Remove(task);
+                _context.SaveChanges();
+                //TempData["Success"] = "Cateogry deleted successfully";
+                return Json(true);
+            }
+            catch
+            {
+                //ViewBag.ErrorMessage = "This category is linked with task hence cannot be deleted";
+                return Json(false);
+            }
         }
     }
 }

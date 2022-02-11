@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css link -->
     <!-- <link rel="stylesheet" href="./user.css"> -->
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 
     <link rel="stylesheet" href="/css/Adminlayout.css">
     <link rel="stylesheet" href="~/css/Admintaskmgmt.css" />
@@ -93,8 +93,8 @@
 
                     <div class="userlist-edit-delete-value" style="padding: 0 0;">
                         <a class="edit-btn" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-user-lock"></i></a>
-                        <a class="detail-btn" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-file-word"></i></a>
-                        <a class="delete-btn" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                        <a class="detail-btn" data-ajax="true" id="@item.Id"><i class="fas fa-file-word"></i></a>
+                        <a class="delete-btn" data-ajax="true" data-id="@item.Id"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
             }
@@ -123,7 +123,96 @@
         <!-- userlist-next-page-section end here -->
     </div>
     <!-- userlist-page-change-section end here -->
-    
+    <div id="myModal" class="modal">
+
+        <!-- adduser section start here -->
+        <div class="adduser-form-section">
+            <!-- <div class="userlist-adduser-header">
+
+            </div> -->
+
+            <div class="modal-content">
+                <div class="container">
+                    <h1>Delete</h1>
+                    <p>Are you sure you want to delete ?</p>
+
+                    <div class="clearfix">
+                        <button class="clearfix-btn deletebtn delete-catgegory">Delete</button>
+                        <button class="clearfix-btn cancelbtn">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div id="myModal-detail" class="modal-detail">
+
+        <!-- adduser section start here -->
+        <div class="detail-form-section">
+            <div class="detail-head-section">
+                <h1>Details</h1>
+            </div>
+            <div class="detail-content-section">
+
+            </div>
+
+            <div class="clearfix btnn">
+                <button id="cancelbtnn" class="clearfix-btnn cancelbtnn">Cancel</button>
+
+            </div>
+
+
+        </div>
+
+        <!-- add-user section end here -->
+    </div>
+
     <script src="/Javascript/adminlayout.js"></script>
+    <script>
+        $(".detail-btn").click(function () {
+            id = this.id;
+            debugger
+            $.ajax({
+                type: "Get",
+                url: "/Task/Details",
+                data: { id: id },
+                async: false,
+                success: function (result) {
+                    $(".detail-content-section").empty();
+                    $(".detail-content-section").append(result);
+                    $("#myModal-detail").show();
+                }
+            });
+        });
+
+        $("#cancelbtnn").click(function () {
+            $("#myModal-detail").hide();
+        });
+
+        $(".deletebtn").click(function () {
+            debugger
+            let id = this.id;
+            $.ajax({
+                type: "POST",
+                url: "/Task/Delete",
+                data: { id: id },
+                async: false,
+
+                success: function (response) {
+                    window.location.reload(true)
+
+                }
+            });
+        });
+        $(".cancelbtn").click(function () {
+            $('#myModal').hide();
+
+        });
+
+    </script>
 </body>
 

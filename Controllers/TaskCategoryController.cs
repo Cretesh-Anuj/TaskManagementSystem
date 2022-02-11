@@ -9,7 +9,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using TaskManagementSystem.Data;
 using TaskManagementSystem.Models;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using TaskManagementSystem.ViewModels;
 
 namespace TaskManagementSystem.Controllers
 {
@@ -39,7 +40,7 @@ namespace TaskManagementSystem.Controllers
                 item.Manager = managers;
             }
 
-            return View(categoryList);
+            return PartialView("_DetailTaskCategory", categoryList);
         }
         [Authorize]
         // GET: TaskCategoryController/Create
@@ -88,7 +89,7 @@ namespace TaskManagementSystem.Controllers
 
                 return View(taskCatogories);
             }
-            else if (User.IsInRole("Manager, User"))
+            else if (User.IsInRole("Manager"))
             {
                 
                 var taskCategories = from cust in _context.TaskCategories
@@ -102,8 +103,18 @@ namespace TaskManagementSystem.Controllers
                 }
                 return View(taskCategories);
             }
+            else {
+                var TaskLists = _context.UsersTasks.Include(a => a.ApplicationUser).Include(a => a.Task).Where(a => a.ApplicationUserId == userId)
+                   .Select(c => new TaskCategory()
+                   {
+                       Name = c.Task.TaskCategory.Name,
+                       Manager = c.Task.TaskCategory.Manager
+
+                   }).Distinct();
+
+                return View(TaskLists);
+            }
             
-            return View();
         }
 
         // GET: TaskCategoryController/Edit/5
@@ -133,29 +144,40 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: TaskCategoryController/Delete/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int id)
-        {
-           var  taskCategory1=  _context.TaskCategories.Find(id);
-            var taskCatogories = _context.TaskCategories.ToList();
+        //[Authorize(Roles = "Admin")]
+        //public ActionResult Delete(int ids)
+        //{
+        //   var  taskCategory1=  _context.TaskCategories.Find(ids);
+        //    var taskCatogories = _context.TaskCategories.ToList();
 
-            foreach (var item in taskCatogories)
-            {
-                var managers = _context.Users.Find(item.ManagerId);
-                item.Manager = managers;
-            }
-            return View(taskCategory1);
-        }
+        //    foreach (var item in taskCatogories)
+        //    {
+        //        var managers = _context.Users.Find(item.ManagerId);
+        //        item.Manager = managers;
+        //    }
+        //    return PartialView("_DeletePartialView", taskCatogories);
+        //}
 
         // POST: TaskCategoryController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(TaskCategory taskCategory)
+        //[ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
-            _context.TaskCategories.Remove(taskCategory);
-            _context.SaveChanges();
-            return RedirectToAction("ViewTaskCategory");
-            
+            try
+            {
+                var taskCategory = _context.TaskCategories.Where(a => a.Id == id).FirstOrDefault();
+                _context.TaskCategories.Remove(taskCategory);
+                _context.SaveChanges();
+                //TempData["Success"] = "Cateogry deleted successfully";
+                return Json(true);
+            }
+            catch
+            {
+                //ViewBag.ErrorMessage = "This category is linked with task hence cannot be deleted";
+                return Json(false);
+            }
+
+
         }
 
     }

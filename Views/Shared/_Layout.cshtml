@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css link -->
-
     <link rel="stylesheet" href="/css/Adminlayout.css">
 
     <!-- font-awesome link -->
@@ -49,9 +48,9 @@
                 </div>
                 <ul class="sub-menu link">
                     @if(User.IsInRole("Manager"))
-                    {<li class="subheader">
+                    {@*<li class="subheader">
                         <label>Form</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a href="#" class="link_name">Task</a>
                     </li>
@@ -59,9 +58,9 @@
                         <a asp-area="" asp-controller="Task" asp-action="Create"> Create Task</a>
                     </li>
                     }
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Table</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="" asp-controller="Task" asp-action="ViewTask">View Task</a>
                     </li>
@@ -86,16 +85,16 @@
                     </li>
                     @if (User.IsInRole("Manager"))
                     {
-                        <li class="subheader">
+                        @*<li class="subheader">
                             <label>Form</label>
-                        </li>
+                        </li>*@
                     <li>
                         <a asp-area="" asp-controller="TaskCategory" asp-action="Create">Create TaskCategory</a>
                     </li>
                     }
-                    <li class="subheader">
+                    @*<li class="subheader">
                         <label>Table</label>
-                    </li>
+                    </li>*@
                     <li>
                         <a asp-area="" asp-controller="TaskCategory" asp-action="ViewTaskCategory">View TaskCategory</a>
                     </li>
@@ -146,8 +145,8 @@
         </div>
     </section>
     <script src="/js/adminlayout.js"></script>
-    <script src="/Js/layout.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
+    <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

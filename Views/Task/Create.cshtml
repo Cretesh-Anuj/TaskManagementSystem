@@ -70,8 +70,7 @@
                 </div>
                 <div class="taskfrom">
                     <label asp-for="AssignedToIds"></label>
-                    <select asp-for="AssignedToIds" class="task-form-input" asp-items="@(new SelectList(Model.AssignedTo, "Value","Text"))" multiple>
-                        <option disabled>Press CTRL to select multiple values</option>
+                    <select id="assignedto" asp-for="AssignedToIds" class="task-form-input" asp-items="@(new SelectList(Model.AssignedTo, "Value","Text"))">
                     </select>
                     <span asp-validation-for="AssignedToIds" class="errormessage"></span>
                 </div>
@@ -90,7 +89,7 @@
                 </div>
 
             </div>
-              
+
             <div class="createtask-thirdrow-section">
 
                 <div class="taskfrom">
@@ -107,7 +106,7 @@
                     <span asp-validation-for="TaskCatogoriesId" class="errormessage"></span>
                 </div>
                 <div class="container-btn">
-                    <input type="submit" value="Create" class="createbtn btn"/>
+                    <input type="submit" value="Create" class="createbtn btn" />
                 </div>
             </div>
         </form>
@@ -128,50 +127,22 @@
 
 }
 
-@*<script>
-        function AssignProjectToUser() {
-            debugger;
-            var users = $("#AssignedToIds").val();
-            var list = [];
-            $.each(users, function (i, v) {
-                var user = new Object();
-                user.UserId = v;
-                list.push(user);
-            });
-
-            list = JSON.stringify(list);
-            //$.ajax({
-            //    url: "/Task/Create",
-            //    method: "POST",
-            //    data: list,
-            //    contentType: "application/json",
-            //    success: function (resuccesssult) {
-            //        debugger;
-            //        if (result == "success") {
-            //            location.reload();
-            //        }
-            //        else {
-            //            debugger;
-            //            location.reload();
-            //        }
-            //    }
-            //})
-            $.ajax({
-                type: 'POST',
-                url: "Create",
-                contentType: "application/json; charset=utf-8",
-                data: list,
-                success: function (result) {
-                    debugger;
-                    if (result == "success") {
-                        location.reload();
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#assignedto").multiselect({
+            onChange: function (element, checked) {
+                if (checked === true) {
+                    //action taken here if true
+                }
+                else if (checked === false) {
+                    if (confirm('Do you wish to deselect the element?')) {
+                        //action taken here
                     }
                     else {
-                        debugger;
-                        location.reload();
+                        $("#assignedto").multiselect('select', element.val());
                     }
                 }
-            });
-
-        }
-    </script>*@
+            }
+        });
+    });
+</script>

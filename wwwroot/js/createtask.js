@@ -1,5 +1,4 @@
 
-
 const createbtn = document.querySelector('.createbtn');
 createbtn.addEventListener('click',(e)=>{
     
@@ -13,7 +12,7 @@ createbtn.addEventListener('click',(e)=>{
 
         setTimeout(function() {
             createbtn.classList.remove('validate');
-            createbtn.classList.add('btn');
+            createbtn.cslassList.add('btn');
     
     
         
