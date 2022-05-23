@@ -225,8 +225,6 @@ namespace TaskManagementSystem.Controllers
                             var users = _context.Users.Find(items);
                             item.AssignedTo.Add(users);
                         
-
-
                     }
 
 
@@ -287,39 +285,9 @@ namespace TaskManagementSystem.Controllers
         // GET: TaskController/Edit/5
         public ActionResult Edit(int id)
         {
-            //var editTaskViewModel = new EditTaskViewModel();
-            //var tasks = _context.Tasks.Find(id);
-            //var users = _context.UsersTasks.ToList();
-            //var dropdown = new List<SelectListItem>();
-            //foreach (var item in users)
-            //{
-            //    SelectListItem selectListItem = new SelectListItem
-            //    {
-            //        Value = item.ApplicationUserId,
-            //        Text = item.ApplicationUserId
-
-            //    };
-            //    dropdown.Add(selectListItem);
-            //}
-
-            //editTaskViewModel.Task.TaskName = tasks.TaskName;
-            //editTaskViewModel.Task.Taskstatus = tasks.Taskstatus;
-            //editTaskViewModel.Task.TaskType = tasks.TaskType;
-            //editTaskViewModel.Task.TaskDescription = tasks.TaskDescription;
-            //editTaskViewModel.Task.TaskCompletedDate = tasks.TaskCompletedDate;
-            //editTaskViewModel.Task.TaskCategoryId = tasks.TaskCategoryId;
-            //editTaskViewModel.Task.DueDate = tasks.DueDate;
-            //editTaskViewModel.Task.CreatedDate = tasks.CreatedDate;
-            //editTaskViewModel.Task.AssignedDate = tasks.AssignedDate;
-            //editTaskViewModel.Task.AssignedById = tasks.AssignedById;
-
-
-
-
 
             var taskViewModel = new TaskViewModel();
             var assignedTolist = _context.Tasks.Include(m => m.UserTasks).Where(x => x.Id == id).FirstOrDefault();
-            
             
             var userList = _context.Users.ToList();
             var users = new List<SelectListItem>();
@@ -359,53 +327,6 @@ namespace TaskManagementSystem.Controllers
             taskViewModel.TaskCompletedDate = assignedTolist.TaskCompletedDate;
             taskViewModel.CreatedDate = assignedTolist.CreatedDate;
             taskViewModel.AssignedToIds = assignedTolist.UserTasks.Select(x => x.ApplicationUserId).ToArray();
-
-           
-           
-            
-            //TaskViewModel taskViewModel = new TaskViewModel();
-
-            ////foreach (var item in allUsers)
-            ////{
-
-            ////}
-            //taskViewModel.TaskName = assignedTolist.TaskName;
-            //taskViewModel.TaskDescription = assignedTolist.TaskDescription;
-            //taskViewModel.TaskCatogoriesId = assignedTolist.TaskCategoryId;
-            //assignedTolist.Taskstatus = taskViewModel.Taskstatus;
-            //taskViewModel.TaskType = assignedTolist.TaskType;
-            //taskViewModel.AssignedById = assignedTolist.AssignedById;
-            //taskViewModel.AssignedDate = assignedTolist.AssignedDate;
-            //taskViewModel.DueDate = assignedTolist.DueDate;
-            //taskViewModel.TaskCompletedDate = assignedTolist.TaskCompletedDate;
-            //taskViewModel.CreatedDate = assignedTolist.CreatedDate;
-
-            //taskViewModel.AssignedTo= PopulateAssinedTo(assignedTolist);
-            //return View(taskViewModel);
-            //ViewBag.assignedToLists = assignedToLists;
-
-            //var task1 = _context.Tasks.Find(id);
-
-            //var userList = _context.Users.ToList();
-            //var users = new List<SelectListItem>();
-
-            //foreach (var item in userList)
-            //{
-            //    SelectListItem userLists = new SelectListItem { Value = item.Id, Text = item.UserName };
-            //    users.Add(userLists);
-            //}
-            //ViewBag.users = users;
-
-
-            //var categoriesList = _context.TaskCategories.ToList();
-            //var categories = new List<SelectListItem>();
-            //foreach (var items in categoriesList)
-            //{
-            //    SelectListItem categorylist = new SelectListItem { Value = items.Id.ToString(), Text = items.Name };
-            //    categories.Add(categorylist);
-            //}
-            //ViewBag.categories = categories;
-
 
             return View(taskViewModel);
 

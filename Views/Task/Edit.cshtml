@@ -20,6 +20,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css link -->
     <!-- <link rel="stylesheet" href="./user.css"> -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -71,10 +77,12 @@
                 </div>
                 <div class="taskfrom">
                     <label asp-for="AssignedToIds"></label>
-                    <select asp-for="AssignedToIds" class="task-form-input" asp-items="@(new SelectList(Model.AssignedTo, "Value","Text"))" multiple>
-                        <option disabled>Press CTRL to select multiple values</option>
-                    </select>
-                    <span asp-validation-for="AssignedToIds" class="errormessage"></span>
+                    <div class="multi-drop">
+                        <select asp-for="AssignedToIds" id="my-select" multiple data-live-search="true" asp-items="@(new SelectList(Model.AssignedTo, "Value","Text"))">
+                        </select>
+                    </div>
+
+                    <span asp-validation-for="AssignedToIds"></span>
                 </div>
 
                 <div class="taskfrom">
@@ -108,7 +116,7 @@
                     <span asp-validation-for="TaskCatogoriesId" class="errormessage"></span>
                 </div>
                 <div class="container-btn">
-                    <input type="submit" value="Updata" class="createbtn btn" />
+                    <input type="submit" value="Update" class="createbtn btn" />
                 </div>
             </div>
         </form>
@@ -126,7 +134,12 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script>
+        $('#my-select').selectpicker();
+    </script>
 }
 
 

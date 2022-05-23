@@ -35,9 +35,9 @@ namespace TaskManagementSystem
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>()
-                    .AddDefaultUI()
-                    .AddDefaultTokenProviders();
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             //services.AddMvc().AddRazorPagesOptions(options =>
             //{
             //    options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/Account/Login");

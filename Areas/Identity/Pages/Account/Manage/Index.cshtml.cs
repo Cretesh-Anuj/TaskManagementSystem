@@ -24,6 +24,7 @@ namespace TaskManagementSystem.Areas.Identity.Pages.Account.Manage
         }
 
         public string Username { get; set; }
+       
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -36,6 +37,10 @@ namespace TaskManagementSystem.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+
+            [Display(Name = "Profile Picture")]
+            public byte Profile { get; set; }
         }
 
         private async System.Threading.Tasks.Task LoadAsync(ApplicationUser user)

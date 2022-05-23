@@ -1,11 +1,11 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    if (User.IsInRole("Admin"))
     {
-        Layout = (string)parentLayout;
+        Layout = "/Views/Shared/_Layout1.cshtml";
     }
     else
     {
-        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+        Layout = "/Views/Shared/_Layout.cshtml";
     }
 }
 
@@ -19,10 +19,11 @@
             <partial name="_ManageNav" />
         </div>
         <div class="col-md-9">
-            @RenderBody()
+            @RenderBody();
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     @RenderSection("Scripts", required: false)
